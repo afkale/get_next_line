@@ -3,7 +3,7 @@ EXPORT				=	get_next_line.so
 CC					=	gcc
 AR					=	ar
 RM					=	rm -f
-CFLAGS				=	-g -Wall -Werror -Wextra -I .
+CFLAGS				=	-g -Wall -Werror -Wextra -D BUFFER_SIZE=42 .
 SRCS				=	./get_next_line.c ./get_next_line_utils.c
 OBJS				=	$(SRCS:.c=.o)
 BONUS_OBJS			=	$(BONUS_SRCS:.c=.o)
