@@ -18,15 +18,14 @@
 # endif
 
 # include <unistd.h>
-# include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
+
+struct s_buffer {
+	char	content[BUFFER_SIZE];
+	size_t	last;
+}	t_buffer;
 
 char	*get_next_line(int fd);
-
-static struct s_buffer {
-	char	content[BUFFER_SIZE];
-	size_t	size;
-	size_t	last;
-}	g_buffer = {"", 0, 0};
 
 #endif // !GET_NEXT_LINE_H

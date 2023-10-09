@@ -11,21 +11,52 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
-void	ft_read(void)
+
+int	has_endl(char *str)
 {
-	int	fd;
-
-	fd = open("./test_short_line.txt", O_RDONLY);
-	g_buffer.size = read(fd, buffer.content, BUFFER_SIZE - 1);
+	int	i;
+	
+	i = 0;
+	while (str[i])
+		if (str[i] == '\0')
+			return (1);
+	return (0);
 }
 
-int	main(void)
+void	get_next_line(int fd)
 {
-	printf("%s, %zu, %zu\n", g_buffer.content, g_buffer.size, g_buffer.last);
+	int		size;
+	char		*line;
+	static s_buffer *buffer;
+
+	size = 0;
+	if (buffer->last == 0)	
+	{
+		size = read(fd, buffer->content, BUFFER_SIZE -1);
+		if (size > 0)
+			buffer->content[size] = 0;
+		while (size > 0 && !has_endl(buffer->content))
+		{
+			line = line + buffer->content;
+		}
+	}
 }
 
 /*
- * 
- *
+ *	fd = open("./test_short_line.txt", O_RDONLY);
+ *	g_buffer.size = read(fd, g_buffer.content, BUFFER_SIZE - 1);
+ *	g_buffer.content[g_buffer.size] = 0;
+ *	printf("%s\n", g_buffer.content);
+ *	g_buffer.size = read(fd, g_buffer.content, BUFFER_SIZE - 1);
+ *	g_buffer.content[g_buffer.size] = 0;
+ *	printf("%s\n", g_buffer.content);
+ *	close(fd);
  */
+
+int	main(void)
+{
+	fd = open("./test_short_line.txt", O_RDONLY);
+	get_next_line(fd)
+}
