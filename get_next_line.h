@@ -21,10 +21,14 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-struct s_buffer {
+//TODO: REMOVE STDIO
+#include <stdio.h>
+//TODO: REMOVE STDIO
+
+typedef struct s_buffer {
 	char	content[BUFFER_SIZE];
 	size_t	last;
-}	t_buffer;
+}				t_buffer;
 
 char	*get_next_line(int fd);
 
