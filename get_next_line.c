@@ -77,18 +77,19 @@ char	*strljoin(char *dest, char *src, size_t n)
 
 	i = 0;
 	res = (char *) malloc(ft_strlen(dest) + n + 1);
-	if (res == NULL)
-		return (dest);
-	if (dest != NULL)
-		while (dest[i])
-		{
-			res[i] = dest[i];
-			i++;
-		}
-	ft_clear(&dest);
-	while (n--)
-		res[i++] = *src++;
-	res[i] = 0;
+	if (res != NULL)
+  {
+    if (dest != NULL)
+      while (dest[i])
+      {
+        res[i] = dest[i];
+        i++;
+      }
+    while (n--)
+      res[i++] = *src++;
+    res[i] = 0;
+  }
+  ft_clear(&dest);
 	return (res);
 }
 
@@ -106,60 +107,38 @@ char	*get_next_line(int fd)
 	{
 		if (buffer.last == 0)
 		{
-			size = read(fd, buffer.content, BUFFER_SIZE -1);
+			size = read(fd, buffer.content, BUFFER_SIZE);
 			if (size > 0)
 				buffer.content[size] = 0;
+      else
+        return (NULL);
 		}
 		endl = strend(buffer.content + buffer.last);
 		line = strljoin(line, buffer.content + buffer.last, endl);
-		if (endl != size)
+		if (ft_strlen(buffer.content) != buffer.last + endl)
 		{
-			buffer.last = endl + 1;
+			buffer.last += endl + 1;
 			return (line);
 		}
 		else
 			buffer.last = 0;
-	
 	}
 	return (line);
 }
 
-/*
- *	fd = open("./test_short_line.txt", O_RDONLY);
- *	g_buffer.size = read(fd, g_buffer.content, BUFFER_SIZE - 1);
- *	g_buffer.content[g_buffer.size] = 0;
- *	printf("%s\n", g_buffer.content);
- *	g_buffer.size = read(fd, g_buffer.content, BUFFER_SIZE - 1);
- *	g_buffer.content[g_buffer.size] = 0;
- *	printf("%s\n", g_buffer.content);
- *	close(fd);
- */
-
 int	main(void)
 {
-	char	*line;
-	int		fd;
+	char    *line;
+	int     fd;
+  size_t  i;
 
+  i = 0;
 	fd = open("./test_short_line.txt", O_RDONLY);
-	line = get_next_line(fd);
-	printf("LINE 1: len %zu\n", ft_strlen(line));
-	printf("%s\n", line);
-	free(line);
-
-	line = get_next_line(fd);
-	printf("LINE 2: len %zu\n", ft_strlen(line));
-	printf("%s\n", line);
-	free(line);
-
-	line = get_next_line(fd);
-	printf("LINE 3: len %zu\n", ft_strlen(line));
-	printf("%s\n", line);
-	free(line);
-
-	line = get_next_line(fd);
-	printf("LINE 4: len %zu\n", ft_strlen(line));
-	printf("%s\n", line);
-	free(line);
-
+  do
+  {
+	  line = get_next_line(fd);
+    printf("LINE %d: len %zu\n%s\n", i++, ft_strlen(line), line);
+    ft_clear(&line);
+  } while (i < 4);
 	return (0);
 }

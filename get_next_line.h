@@ -26,7 +26,7 @@
 //TODO: REMOVE STDIO
 
 typedef struct s_buffer {
-	char	content[BUFFER_SIZE];
+	char	content[BUFFER_SIZE + 1];
 	size_t	last;
 }				t_buffer;
 
