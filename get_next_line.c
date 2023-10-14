@@ -12,17 +12,6 @@
 
 #include "get_next_line.h"
 
-int	has_endl(char *str)
-{
-	int	i;
-	
-	i = 0;
-	while (str[i])
-		if (str[i++] == '\n')
-			return (1);
-	return (0);
-}
-
 void	ft_clear(char **str)
 {
 	if (*str == NULL)
@@ -67,7 +56,6 @@ void	*ft_calloc(size_t size)
 	while (size--)
 		res[size] = 0;
 	return (res);
-
 }
 
 char	*strljoin(char *dest, char *src, size_t n)
@@ -111,7 +99,10 @@ char	*get_next_line(int fd)
 			if (size > 0)
 				buffer.content[size] = 0;
       else
+      {
+        ft_clear(&line);
         return (NULL);
+      }
 		}
 		endl = strend(buffer.content + buffer.last);
 		line = strljoin(line, buffer.content + buffer.last, endl);
@@ -133,12 +124,14 @@ int	main(void)
   size_t  i;
 
   i = 0;
-	fd = open("./test_short_line.txt", O_RDONLY);
+	fd = open("./el_quijote.txt", O_RDONLY);
   do
   {
 	  line = get_next_line(fd);
-    printf("LINE %d: len %zu\n%s\n", i++, ft_strlen(line), line);
+    printf("LINE %d: \n%s\n", i++, line);
+    if (line == NULL)
+      i = 0;
     ft_clear(&line);
-  } while (i < 4);
+  } while (i != 0);
 	return (0);
 }
