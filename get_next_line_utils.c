@@ -6,7 +6,7 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:32:57 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/07 15:36:15 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/15 18:24:37 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ void	ft_clear(char **str)
 size_t	strend(t_buffer buffer)
 {
 	size_t	i;
-  size_t  last;
-  char    *aux;
-	
-  last = buffer.count - buffer.last;
-  aux = buffer.content + buffer.last;
+	size_t  last;
+	char    *aux;
+		
+	last = buffer.count - buffer.last;
+	aux = buffer.content + buffer.last;
 	i = 0;
 	if (aux == NULL)
 		return (i);
