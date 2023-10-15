@@ -12,56 +12,10 @@
 
 #include "get_next_line.h"
 
-void	ft_clear(char **str)
+char *strljoin(char *dest, char *src, size_t n)
 {
-	if (*str == NULL)
-		return ;
-	free(*str);
-	*str = NULL;
-}
-
-size_t	strend(char	*str)
-{
-
-	size_t	i;
-	
-	i = 0;
-	if (str == NULL)
-		return (i);
-	while (str[i] && str[i] != '\n')
-		i++;
-	return (i);
-
-}
-
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-	
-	i = 0;
-	if (str == NULL)
-		return (i);
-	while (str[i])
-		i++;
-	return (i);
-}
-
-void	*ft_calloc(size_t size)
-{
-	unsigned char	*res;
-
-	res = malloc(size);
-	if (res == NULL)
-		return (NULL);
-	while (size--)
-		res[size] = 0;
-	return (res);
-}
-
-char	*strljoin(char *dest, char *src, size_t n)
-{
-	size_t	i;
-	char	*res;
+	size_t  i;
+	char    *res;
 
 	i = 0;
 	res = (char *) malloc(ft_strlen(dest) + n + 1);
@@ -83,55 +37,29 @@ char	*strljoin(char *dest, char *src, size_t n)
 
 char	*get_next_line(int fd)
 {
-	size_t			size;
-	size_t			endl;
-	char			*line;
+	size_t          endl;
+	char            *line;
 	static t_buffer buffer;
 
 	line = NULL;
-	size = 1;
-	endl = 1;
-	while (size > 0)
+  if (fd < 0 || BUFFER_SIZE <= 0)
+    return (NULL);
+	while (1)
 	{
 		if (buffer.last == 0)
 		{
-			size = read(fd, buffer.content, BUFFER_SIZE);
-			if (size > 0)
-				buffer.content[size] = 0;
-      else
+			buffer.count = read(fd, buffer.content, BUFFER_SIZE);
+			if (buffer.count == 0)
       {
         ft_clear(&line);
         return (NULL);
       }
 		}
-		endl = strend(buffer.content + buffer.last);
+		endl = strend(buffer);
 		line = strljoin(line, buffer.content + buffer.last, endl);
-		if (ft_strlen(buffer.content) != buffer.last + endl)
-		{
-			buffer.last += endl + 1;
+		buffer.last += endl + 1;
+		if (buffer.count != buffer.last - 1)
 			return (line);
-		}
-		else
-			buffer.last = 0;
+    buffer.last = 0;
 	}
-	return (line);
-}
-
-int	main(void)
-{
-	char    *line;
-	int     fd;
-  size_t  i;
-
-  i = 0;
-	fd = open("./el_quijote.txt", O_RDONLY);
-  do
-  {
-	  line = get_next_line(fd);
-    printf("LINE %d: \n%s\n", i++, line);
-    if (line == NULL)
-      i = 0;
-    ft_clear(&line);
-  } while (i != 0);
-	return (0);
 }

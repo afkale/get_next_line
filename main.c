@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
+#include <stdio.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
-# endif
+int	main(void)
+{
+	char    *line;
+	int     fd;
+  size_t  j;
+  size_t  i;
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
+  j = 0;
+  char  *files[] = {
+    "./test_short_line.txt",
+    "./text.txt",
+    "./hola.txt",
+    "./el_quijote_ol.txt",
+    "./el_quijote.txt",
+  };
 
-typedef struct s_buffer {
-	char    content[BUFFER_SIZE];
-	size_t	last;
-	size_t	count;
-}             t_buffer;
-
-void    ft_clear(char **str);
-void    *ft_calloc(size_t size);
-char    *get_next_line(int fd);
-size_t  strend(t_buffer buffer);
-size_t  ft_strlen(char *str);
-
-#endif // !GET_NEXT_LINE_H
+  for ( i = 0; i < sizeof(files); i++ ) {
+    fd = open(files[i], O_RDONLY);
+    do
+    {
+      ft_clear(&line);
+      line = get_next_line(fd);
+      printf("%d:\n%s\n",j++ ,line);
+    } while (line != NULL);
+    close(fd);
+    j = 0;
+  }
+	return (0);
+}
