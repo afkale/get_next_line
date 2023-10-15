@@ -12,6 +12,7 @@ SRCS				=	./get_next_line.c ./get_next_line_utils.c
 OBJS				=	$(SRCS:.c=.o)
 
 all: $(NAME)
+	@echo "Gud bro..."
 
 $(NAME): $(OBJS)
 	$(AR) rcs $(NAME) $(OBJS)
@@ -23,3 +24,6 @@ fclean: clean
 	$(RM) $(NAME)
 
 re:	fclean all 
+
+.SILENT: all $(NAME) $(OBJS) clean fclean
+.PHONY: all clean fclean re
