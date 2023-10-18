@@ -20,11 +20,9 @@ int	main(void)
 	char	filename[100];
 	int     fd;
 	int     fd2;
-	size_t  j;
   	size_t  i;
 
 	line = NULL;
-	j = 0;
 	i = 0;
 	char  *files[] = {
 		"test.txt",
@@ -67,7 +65,6 @@ int	main(void)
 		while (line != NULL);
 		close(fd);
 		close(fd2);
-		j = 0;
 		i++;
 	}
 	return (0);

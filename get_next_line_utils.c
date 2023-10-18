@@ -23,9 +23,9 @@ void	ft_clear(char **str)
 size_t	strend(t_buffer buffer)
 {
 	size_t	i;
-	size_t  last;
-	char    *aux;
-		
+	size_t	last;
+	char	*aux;
+
 	last = buffer.count - buffer.last;
 	aux = buffer.content + buffer.last;
 	i = 0;
@@ -34,13 +34,12 @@ size_t	strend(t_buffer buffer)
 	while (aux[i] != '\n' && i < last)
 		i++;
 	return (i);
-
 }
 
 size_t	ft_strlen(char *str)
 {
 	size_t	i;
-	
+
 	i = 0;
 	if (str == NULL)
 		return (i);

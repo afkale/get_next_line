@@ -22,15 +22,15 @@
 # include <fcntl.h>
 
 typedef struct s_buffer {
-	char    content[BUFFER_SIZE];
+	char	content[BUFFER_SIZE];
 	size_t	last;
 	size_t	count;
-}             t_buffer;
+}		t_buffer;
 
-void    ft_clear(char **str);
-void    *ft_calloc(size_t size);
-char    *get_next_line(int fd);
-size_t  strend(t_buffer buffer);
-size_t  ft_strlen(char *str);
+void	ft_clear(char **str);
+void	*ft_calloc(size_t size);
+char	*get_next_line(int fd);
+size_t	strend(t_buffer buffer);
+size_t	ft_strlen(char *str);
 
 #endif // !GET_NEXT_LINE_H

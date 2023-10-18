@@ -62,24 +62,3 @@ char	*get_next_line(int fd)
 		buffer.last = 0;
 	}
 }
-//
-//int main(int argc, char *argv[])
-//{
-//	int     fd;
-//	char    *line;
-//
-//	if (argc != 2)
-//		return (1);
-//	line = NULL;
-//	fd = open(argv[1], O_RDONLY);
-//	do
-//	{
-//		ft_clear(&line);
-//		line = get_next_line(fd);
-//		if (line != NULL)
-//		{
-//			printf("%s\n", line);
-//		}
-//	}
-//	while (line != NULL);
-//}

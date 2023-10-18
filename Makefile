@@ -1,4 +1,4 @@
-NAME				=	get_next_line.a
+LIBRARY				=	get_next_line.a
 EXPORT				=	get_next_line.so
 
 ifndef BUFFER_SIZE
@@ -8,22 +8,26 @@ endif
 CC				=	cc
 CFLAGS				=	-Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
 SRCS				=	./get_next_line.c ./get_next_line_utils.c
+TESTFILE			=	main.c
 
 OBJS				=	$(SRCS:.c=.o)
 
-all: $(NAME)
+all: $(LIBRARY)
 	@echo "Gud bro..."
 
-$(NAME): $(OBJS)
-	$(AR) rcs $(NAME) $(OBJS)
+test: $(TESTFILE) $(LIBRARY)
+	$(CC) $(CFLAGS) -g3 -o $@ $< -L. -l:$(LIBRARY)
+
+$(LIBRARY): $(OBJS)
+	$(AR) rcs $(LIBRARY) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(LIBRARY) test
 
 re:	fclean all 
 
-.SILENT: all $(NAME) $(OBJS) clean fclean
+.SILENT: all LIBRARY $(OBJS) clean fclean
 .PHONY: all clean fclean re
