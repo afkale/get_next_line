@@ -6,8 +6,8 @@ ifndef BUFFER_SIZE
 endif
 
 CC					=	cc
-CFLAGS				=	-Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
-TESTFLAGS			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3 -fsanitize=address
+CFLAGS				=	-g3 -Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
+TESTFLAGS			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3
 
 SRCS				=	./get_next_line.c ./get_next_line_utils.c
 TESTFILE			=	tests.c
@@ -16,8 +16,8 @@ OBJS				=	$(SRCS:.c=.o)
 
 all: $(LIBRARY)
 
-test: $(TESTFILE) $(LIBRARY)
-	$(CC) $(TESTFLAGS) -g3 -o $@ $< -L. -l:$(LIBRARY)
+debug: $(LIBRARY)
+	$(CC) $(TESTFLAGS) -o debug tests.c -L. -l:$(LIBRARY)
 
 $(LIBRARY): $(OBJS)
 	$(AR) rcs $(LIBRARY) $(OBJS)
@@ -26,9 +26,9 @@ clean:
 	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(LIBRARY) test
+	$(RM) $(LIBRARY) debug
 
-re:	fclean all 
+re:	fclean all
 
-.SILENT: all $(LIBRARY) $(OBJS) clean fclean test
+#.SILENT: all $(LIBRARY) $(OBJS) clean fclean debug
 .PHONY: all clean fclean re
