@@ -6,7 +6,7 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 16:04:17 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/15 18:57:18 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/21 17:34:33 by ale              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,26 @@ char	*get_next_line(int fd)
 {
 	size_t			endl;
 	char			*line;
+	size_t			count;
 	static t_buffer	buffer;
 
 	line = NULL;
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		buffer.last = 0;
 		return (NULL);
+	}
 	while (1)
 	{
 		if (buffer.last == 0)
 		{
-			buffer.count = read(fd, buffer.content, BUFFER_SIZE);
+			count = read(fd, buffer.content, BUFFER_SIZE);
 			if (buffer.count <= 0)
 				return (line);
 		}
 		endl = strend(buffer);
 		line = strljoin(line, buffer.content + buffer.last, endl);
-		buffer.last += endl + 1;
-		if (buffer.count != buffer.last - 1)
-			return (line);
+		buffer.last += endl;
 		buffer.last = 0;
 	}
 }

@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int	main(void)
+int  main1(void)
 {
 	char    *line;
 	char	out_filename[100];
@@ -27,10 +27,10 @@ int	main(void)
 	line = NULL;
 	i = 0;
 	char  *files[] = {
+            "41_with_nl",
             "1char.txt",
             "41_no_nl",
             "41_no_nl.txt",
-            "41_with_nl",
             "42_no_nl",
             "42_with_nl",
             "43_no_nl",
@@ -63,25 +63,42 @@ int	main(void)
 
 	while (files[i])
 	{
-        sprintf(in_filename, "files/%s", files[i]);
+    sprintf(in_filename, "files/%s", files[i]);
 		fd = open(in_filename, O_RDONLY);
-        sprintf(out_filename, "responses/%s", files[i]);
-        fd2 = open(out_filename, O_WRONLY | O_TRUNC | O_CREAT, 0644);
-        printf("%zu: %s\n", i,in_filename);
-		do
-		{
-            next = line != NULL;
-			ft_clear(&line);
-			line = get_next_line(fd);
-            if (next && line != NULL)
-                write(fd2, "\n", 1);
-			if (line != NULL)
-                write(fd2, line, ft_strlen(line));
-		}
-		while (line != NULL);
+    sprintf(out_filename, "responses/%s", files[i]);
+    fd2 = open(out_filename, O_WRONLY | O_TRUNC | O_CREAT, 0644);
+    printf("%zu: %s\n", i,in_filename);
+    while ((line = get_next_line(fd)))
+    {
+      write(fd2, line, ft_strlen(line));
+      ft_clear(&line);
+    }
 		close(fd);
 		close(fd2);
 		i++;
 	}
 	return (0);
+}
+
+
+
+int main(int argc, char *argv[])
+{
+  int   fd;
+  char  *line;
+
+  line = NULL;
+  if (argc != 2)
+  {
+    printf("Te faltan los parametros");
+    return (1);
+  }
+  fd = open(argv[1], O_RDONLY);
+  while ((line = get_next_line(fd)))
+  {
+    printf("%s", line);
+    ft_clear(&line);
+  }
+  close(fd);
+  return (0);
 }

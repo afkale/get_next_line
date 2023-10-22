@@ -33,6 +33,8 @@ size_t	strend(t_buffer buffer)
 		return (i);
 	while (aux[i] != '\n' && i < last)
 		i++;
+	if (aux[i] == '\n')
+		i++;
 	return (i);
 }
 
@@ -46,16 +48,4 @@ size_t	ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
-}
-
-void	*ft_calloc(size_t size)
-{
-	unsigned char	*res;
-
-	res = malloc(size);
-	if (res == NULL)
-		return (NULL);
-	while (size--)
-		res[size] = 0;
-	return (res);
 }

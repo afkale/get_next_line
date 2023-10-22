@@ -7,7 +7,7 @@ endif
 
 CC					=	cc
 CFLAGS				=	-g3 -Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
-TESTFLAGS			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3
+TESTFLAGS			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3 -fsanitize=address
 
 SRCS				=	./get_next_line.c ./get_next_line_utils.c
 TESTFILE			=	tests.c

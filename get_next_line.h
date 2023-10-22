@@ -21,6 +21,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
+# include <stdio.h>
+
 typedef struct s_buffer {
 	char	content[BUFFER_SIZE];
 	size_t	last;
