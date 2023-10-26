@@ -41,26 +41,26 @@ char	*get_next_line(int fd)
 {
 	size_t			endl;
 	char			*line;
-	size_t			count;
 	static t_buffer	buffer;
 
 	line = NULL;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd <= 0 || BUFFER_SIZE <= 0)
 	{
 		buffer.last = 0;
+		buffer.count = 0;
 		return (NULL);
 	}
 	while (1)
 	{
 		if (buffer.last == 0)
-		{
-			count = read(fd, buffer.content, BUFFER_SIZE);
-			if (buffer.count <= 0)
-				return (line);
-		}
+			buffer.count = read(fd, buffer.content, BUFFER_SIZE);
+		if (buffer.count <= 0)
+			return (line);
 		endl = strend(buffer);
 		line = strljoin(line, buffer.content + buffer.last, endl);
 		buffer.last += endl;
+		if (buffer.last != buffer.count)
+			return (line);
 		buffer.last = 0;
 	}
 }

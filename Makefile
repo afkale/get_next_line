@@ -7,7 +7,7 @@ endif
 
 CC					=	cc
 CFLAGS				=	-g3 -Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
-TESTFLAGS			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3 -fsanitize=address
+TESTFLAGS			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3 
 
 SRCS				=	./get_next_line.c ./get_next_line_utils.c
 TESTFILE			=	tests.c
@@ -16,8 +16,8 @@ OBJS				=	$(SRCS:.c=.o)
 
 all: $(LIBRARY)
 
-debug: $(LIBRARY)
-	$(CC) $(TESTFLAGS) -o debug tests.c -L. -l:$(LIBRARY)
+debug: $(LIBRARY) $(TESTFILE)
+	$(CC) $(TESTFLAGS) -o debug $(TESTFILE) -L. -l:$(LIBRARY) -I .
 
 $(LIBRARY): $(OBJS)
 	$(AR) rcs $(LIBRARY) $(OBJS)
