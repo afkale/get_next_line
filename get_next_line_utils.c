@@ -33,7 +33,7 @@ size_t	strend(t_buffer buffer)
 		return (i);
 	while (aux[i] != '\n' && i < last)
 		i++;
-	if (aux[i] == '\n')
+	if (i < last && aux[i] == '\n')
 		i++;
 	return (i);
 }
