@@ -1,32 +1,38 @@
-NAME				=	get_next_line.a
+LIBRARY				=	get_next_line.a
 EXPORT				=	get_next_line.so
-CC					=	gcc
-AR					=	ar
-RM					=	rm -f
-CFLAGS				=	-g -Wall -Werror -Wextra -D BUFFER_SIZE=42 .
+
+ifndef BUFFER_SIZE
+	BUFFER_SIZE = 200000
+endif
+
+CC					=	cc
+CFLAGS				=	-Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
+FLAGS_SANITIZE		=	-D BUFFER_SIZE=$(BUFFER_SIZE) -fsanitize=address
+FLAGS_DEBUG			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3
+
 SRCS				=	./get_next_line.c ./get_next_line_utils.c
+TESTFILE			=	tests.c
+
 OBJS				=	$(SRCS:.c=.o)
-BONUS_OBJS			=	$(BONUS_SRCS:.c=.o)
 
+all: $(LIBRARY)
 
-all: $(NAME)
+debug: $(LIBRARY) $(TESTFILE)
+	$(CC) $(FLAGS_DEBUG) -o debug $(TESTFILE) -L. -l:$(LIBRARY) -I .
 
-$(NAME): $(OBJS)
-	$(AR) rcs $(NAME) $(OBJS)
+sanitize: $(LIBRARY) $(TESTFILE)
+	$(CC) $(FLAGS_SANITIZE) -o sanitize $(TESTFILE) -L. -l:$(LIBRARY) -I .
 
-export: $(OBJS)
-	$(CC) $(CFLAGS) -shared -o $(EXPORT) $(OBJS)
-
-re:	fclean $(NAME)
+$(LIBRARY): $(OBJS)
+	$(AR) rcs $(LIBRARY) $(OBJS)
 
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(LIBRARY) debug sanitize
 
-bonus:	$(OBJS) $(BONUS_OBJS)
-	$(AR) rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+re:	fclean all
 
-.SILENT: all $(NAME) $(OBJS) clean fclean re bonus export
-.PHONY: all clean fclean re bonus
+#.SILENT: all $(LIBRARY) $(OBJS) clean fclean debug
+.PHONY: all clean fclean re
