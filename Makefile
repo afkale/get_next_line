@@ -6,7 +6,7 @@ ifndef BUFFER_SIZE
 endif
 
 CC					=	cc
-CFLAGS				=	-Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
+CFLAGS				=	-g3 -Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
 FLAGS_SANITIZE		=	-D BUFFER_SIZE=$(BUFFER_SIZE) -fsanitize=address
 FLAGS_DEBUG			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3
 
@@ -20,7 +20,7 @@ all: $(LIBRARY)
 debug: $(LIBRARY) $(TESTFILE)
 	$(CC) $(FLAGS_DEBUG) -o debug $(TESTFILE) -L. -l:$(LIBRARY) -I .
 
-sanitize: $(LIBRARY) $(TESTFILE)
+sanitize: $(LIBRARY) $(TESTFILE) 
 	$(CC) $(FLAGS_SANITIZE) -o sanitize $(TESTFILE) -L. -l:$(LIBRARY) -I .
 
 $(LIBRARY): $(OBJS)
@@ -35,4 +35,4 @@ fclean: clean
 re:	fclean all
 
 #.SILENT: all $(LIBRARY) $(OBJS) clean fclean debug
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re 

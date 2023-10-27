@@ -62,6 +62,7 @@ char	*get_next_line(int fd)
         if (buffer.last != buffer.count)
             return (line);
         buffer.last = 0;
-        buffer.count = 0;
+        if(line[buffer.count - 1] == '\n')
+            return (line);
     }
 }
