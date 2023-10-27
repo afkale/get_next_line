@@ -68,7 +68,7 @@ int  test1(void)
 		fd = open(in_filename, O_RDONLY);
 		sprintf(out_filename, "responses/%s", files[i]);
 		fd2 = open(out_filename, O_WRONLY | O_TRUNC | O_CREAT, 0644);
-		printf("%zu: %s\n", i,in_filename);
+		printf("%zu: %s\n", i+1, in_filename);
 		while ((line = get_next_line(fd)))
 		{
 			write(fd2, line, ft_strlen(line));
@@ -83,9 +83,11 @@ int  test1(void)
 
 int test2(int argc, char *argv[])
 {
-	int   fd;
-	char  *line;
+	int	fd;
+	char	*line;
+	int	line_number;
 
+	line_number = 0;
 	line = NULL;
 	if (argc != 2)
 	{
@@ -95,10 +97,11 @@ int test2(int argc, char *argv[])
 	fd = open(argv[1], O_RDONLY);
 	while ((line = get_next_line(fd)))
 	{
-		printf("%s", line);
+		printf("%d: %s", line_number++, line);
 		ft_clear(&line);
 	}
 	close(fd);
+	printf("\n");
 	return (0);
 }
 
@@ -122,8 +125,9 @@ int test3()
 	}
 }
 
-int	main()
+int	main(int argc, char *argv[])
 {
-	test1();
+	test2(argc, argv);
+//	test1();
 	return (0);
 }
