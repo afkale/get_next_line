@@ -27,39 +27,38 @@ int  test1(void)
     line = NULL;
     i = 0;
     char  *files[] = {
+        "1char.txt",
+        "41_no_nl",
+        "41_no_nl.txt",
         "41_with_nl",
+        "42_no_nl",
         "42_with_nl",
-//        "43_with_nl",
-//        "multiple_line_no_nl",
-//        "multiple_line_with_nl",
-//        "alternate_line_nl_no_nl",
-//        "alternate_line_nl_with_nl",
-//        "41_no_nl",
-//        "41_no_nl.txt",
-//        "1char.txt",
-//        "42_with_nl",
-//        "43_no_nl",
-//        "big_line_no_nl",
-//        "big_line_with_nl",
-//        "el_quijote_ol.txt",
-//        "el_quijote.txt",
-//        "empty",
-//        "empty.txt",
-//        "giant_line_nl.txt",
-//        "giant_line.txt",
-//        "hola.txt",
-//        "lines_around_10.txt",
-//        "multiple_line_no_nl",
-//        "multiple_line_with_nl",
-//        "multiple_nl.txt",
-//        "multiple_nlx5",
-//        "nl",
-//        "one_line_no_nl.txt",
-//        "only_nl.txt",
-//        "read_error.txt",
-//        "test2.txt",
-//        "test_short_line.txt",
-//        "variable_nls.txt",
+        "43_no_nl",
+        "43_with_nl",
+        "alternate_line_nl_no_nl",
+        "alternate_line_nl_with_nl",
+        "big_line_no_nl",
+        "big_line_with_nl",
+        "el_quijote_ol.txt",
+        "el_quijote.txt",
+        "empty",
+        "empty.txt",
+        "giant_line_nl.txt",
+        "giant_line.txt",
+        "hola.txt",
+        "lines_around_10.txt",
+        "multiple_line_no_nl",
+        "multiple_line_with_nl",
+        "multiple_nl.txt",
+        "multiple_nlx5",
+        "nl",
+        "one_line_no_nl.txt",
+        "only_nl.txt",
+        "read_error.txt",
+        "test2.txt",
+        "test_nl",
+        "test_short_line.txt",
+        "variable_nls.txt",
         NULL
     };
     while (files[i])
@@ -131,7 +130,6 @@ int test3()
 
 int	main(int argc, char *argv[])
 {
-    test2(argc, argv);
-    //test1();
+    test1();
     return (0);
 }

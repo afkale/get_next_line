@@ -44,6 +44,7 @@ char	*get_next_line(int fd)
     static t_buffer	buffer;
 
     line = NULL;
+    endl = 0;
     if (fd <= 0 || BUFFER_SIZE <= 0)
     {
         buffer.last = 0;
@@ -62,7 +63,7 @@ char	*get_next_line(int fd)
         if (buffer.last != buffer.count)
             return (line);
         buffer.last = 0;
-        if(line[buffer.count - 1] == '\n')
+        if(buffer.content[buffer.count - 1] == '\n')
             return (line);
     }
 }
