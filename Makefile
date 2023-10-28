@@ -2,7 +2,7 @@ LIBRARY				=	get_next_line.a
 EXPORT				=	get_next_line.so
 
 ifndef BUFFER_SIZE
-	BUFFER_SIZE = 200000
+	BUFFER_SIZE=10000000
 endif
 
 CC					=	gcc
@@ -23,21 +23,27 @@ all: $(LIBRARY)
 $(LIBRARY): $(OBJS)
 	$(AR) rcs $(LIBRARY) $(OBJS)
 
-debug: $(LIBRARY) $(TESTFILE)
-	$(CC) $(FLAGS_DEBUG) -o debug $(TESTFILE) -L. -l:$(LIBRARY) -I .
-
-sanitize: $(LIBRARY) $(TESTFILE) 
-	$(CC) $(FLAGS_SANITIZE) -o sanitize $(TESTFILE) -L. -l:$(LIBRARY) -I .
-
 bonus: $(B_OBJS)
 	touch bonus
 	$(AR) rcs get_next_line_bonus.a $(B_OBJS) 
+	
+bdebug: get_next_line_bonus.a $(TESTFILE)
+	$(CC) $(FLAGS_DEBUG) -o bdebug $(TESTFILE) -L. -l:get_next_line_bonus.a -I .
+
+debug: $(LIBRARY) $(TESTFILE)
+	$(CC) $(FLAGS_DEBUG) -o debug $(TESTFILE) -L. -l:$(LIBRARY) -I .
+
+bsanitize: get_next_line_bonus.a $(TESTFILE) 
+	$(CC) $(FLAGS_SANITIZE) -o bsanitize $(TESTFILE) -L. -l:get_next_line_bonus.a -I .
+
+sanitize: $(LIBRARY) $(TESTFILE) 
+	$(CC) $(FLAGS_SANITIZE) -o sanitize $(TESTFILE) -L. -l:$(LIBRARY) -I .
 
 clean:
 	$(RM) $(OBJS) $(B_OBJS)
 
 fclean: clean
-	$(RM) $(LIBRARY) debug sanitize
+	$(RM) $(LIBRARY) debug sanitize bdebug bsanitize
 
 re:	fclean all
 
