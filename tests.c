@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 10:53:51 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 14:37:44 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:36:10 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	test2(int argc, char *argv[])
 	return (0);
 }
 
-int	test3(void)
+void	test3(void)
 {
 	int		fd;
 	char	*line;
@@ -118,6 +118,19 @@ int	test3(void)
 		ft_clear(&line);
 	}
 	fd = 100;
+	while ((line = get_next_line(fd)))
+	{
+		printf("%s", line);
+		ft_clear(&line);
+	}
+}
+
+void	test4(void)
+{
+	int		fd;
+	char	*line;
+	
+	fd = 1000;
 	while ((line = get_next_line(fd)))
 	{
 		printf("%s", line);

@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:15:39 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 14:06:30 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:23:54 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t	strend(t_buffer const *buffer)
 	i = 0;
 	if (aux == NULL)
 		return (i);
-	while (aux[i] != '\n' && i < last)
+	while (i < last && aux[i] != '\n')
 		i++;
 	if (i < last && aux[i] == '\n')
 		i++;

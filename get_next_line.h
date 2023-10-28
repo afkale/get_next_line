@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:15:28 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 14:03:12 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:30:50 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 typedef struct s_buffer {
 	char	content[BUFFER_SIZE];
-	size_t	last;
-	size_t	count;
+	int		last;
+	int		count;
 }		t_buffer;
 
 void	ft_clear(char **str);
