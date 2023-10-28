@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 10:53:51 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 12:57:37 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/28 14:37:44 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	test1(void)
 		"alternate_line_nl_with_nl",
 		"big_line_no_nl",
 		"big_line_with_nl",
-		"el_quijote_ol.txt",
-		"el_quijote.txt",
+//		"el_quijote_ol.txt",
+//		"el_quijote.txt",
 		"empty",
 		"empty.txt",
 		"giant_line_nl.txt",

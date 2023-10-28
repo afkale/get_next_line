@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:15:28 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 11:15:30 by ale              ###   ########.fr       */
+/*   Updated: 2023/10/28 14:03:12 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
+#  define BUFFER_SIZE 10000000
 # endif
 
 # include <unistd.h>
@@ -30,7 +30,7 @@ typedef struct s_buffer {
 void	ft_clear(char **str);
 void	*ft_calloc(size_t size);
 char	*get_next_line(int fd);
-size_t	strend(t_buffer buffer);
+size_t	strend(t_buffer const *buffer);
 size_t	ft_strlen(char *str);
 
 #endif // !GET_NEXT_LINE_H

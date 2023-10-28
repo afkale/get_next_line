@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:15:39 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 11:15:39 by ale              ###   ########.fr       */
+/*   Updated: 2023/10/28 14:06:30 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	ft_clear(char **str)
 	*str = NULL;
 }
 
-size_t	strend(t_buffer buffer)
+size_t	strend(t_buffer const *buffer)
 {
-	size_t	i;
-	size_t	last;
-	char	*aux;
+	size_t		i;
+	size_t		last;
+	const char	*aux;
 
-	last = buffer.count - buffer.last;
-	aux = buffer.content + buffer.last;
+	last = buffer->count - buffer->last;
+	aux = buffer->content + buffer->last;
 	i = 0;
 	if (aux == NULL)
 		return (i);

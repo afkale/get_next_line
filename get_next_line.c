@@ -6,7 +6,7 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 12:41:40 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/28 12:41:40 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/28 14:22:16 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*get_next_line(int fd)
 
 	line = NULL;
 	endl = 0;
-	if (fd <= 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (1)
 	{
@@ -53,7 +53,7 @@ char	*get_next_line(int fd)
 			buffer.count = read(fd, buffer.content, BUFFER_SIZE);
 		if (buffer.count <= 0)
 			return (line);
-		endl = strend(buffer);
+		endl = strend(&buffer);
 		line = strljoin(line, buffer.content + buffer.last, endl);
 		buffer.last += endl;
 		if (buffer.last != buffer.count)
