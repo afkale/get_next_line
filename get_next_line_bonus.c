@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 12:41:40 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/28 18:55:53 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:59:37 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+#define MAX_FD 8192
 
 char	*strljoin(char *dest, char *src, size_t n)
 {
@@ -41,7 +43,7 @@ char	*get_next_line(int fd)
 {
 	size_t			endl;
 	char			*line;
-	static t_buffer	buffer;
+	static t_buffer	buffer[MAX_FD];
 
 	line = NULL;
 	endl = 0;
@@ -49,19 +51,19 @@ char	*get_next_line(int fd)
 		return (NULL);
 	while (1)
 	{
-		if (buffer.last == 0)
-			buffer.count = read(fd, buffer.content, BUFFER_SIZE);
-		if (buffer.count < 0)
+		if (buffer[fd].last == 0)
+			buffer[fd].count = read(fd, buffer[fd].content, BUFFER_SIZE);
+		if (buffer[fd].count < 0)
 			return (ft_clear(&line), NULL);
-		if (buffer.count == 0)
+		if (buffer[fd].count == 0)
 			return (line);
-		endl = strend(&buffer);
-		line = strljoin(line, buffer.content + buffer.last, endl);
-		buffer.last += endl;
-		if (buffer.last != buffer.count)
+		endl = strend(&buffer[fd]);
+		line = strljoin(line, buffer[fd].content + buffer[fd].last, endl);
+		buffer[fd].last += endl;
+		if (buffer[fd].last != buffer[fd].count)
 			return (line);
-		buffer.last = 0;
-		if (buffer.content[buffer.count - 1] == '\n')
+		buffer[fd].last = 0;
+		if (buffer[fd].content[buffer[fd].count - 1] == '\n')
 			return (line);
 	}
 }

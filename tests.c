@@ -6,13 +6,72 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 10:53:51 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 16:36:10 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:03:15 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 #include <string.h>
+
+const char	*files[] = {
+	"1char.txt",
+	"41_no_nl",
+	"41_no_nl.txt",
+	"41_with_nl",
+	"42_no_nl",
+	"42_with_nl",
+	"43_no_nl",
+	"43_with_nl",
+	"alternate_line_nl_no_nl",
+	"alternate_line_nl_with_nl",
+	"big_line_no_nl",
+	"big_line_with_nl",
+	"el_quijote_ol.txt",
+	"el_quijote.txt",
+	"empty",
+	"empty.txt",
+	"giant_line_nl.txt",
+	"giant_line.txt",
+	"hola.txt",
+	"lines_around_10.txt",
+	"multiple_line_no_nl",
+	"multiple_line_with_nl",
+	"multiple_nl.txt",
+	"multiple_nlx5",
+	"nl",
+	"one_line_no_nl.txt",
+	"only_nl.txt",
+	"read_error.txt",
+	"test2.txt",
+	"test_nl",
+	"test_short_line.txt",
+	"variable_nls.txt",
+	NULL
+};
+
+int	test0(void)
+{
+	char		*line;
+	char		in_filename[100];
+	int			fd;
+	int			next;
+	size_t		i;
+
+	line = NULL;
+	i = 0;
+	while (files[i])
+	{
+		sprintf(in_filename, "files/%s", files[i]);
+		fd = open(in_filename, O_RDONLY);
+		printf("%zu: %s\n", i + 1, in_filename);
+		while ((line = get_next_line(fd)))
+			ft_clear(&line);
+		close(fd);
+		i++;
+	}
+	return (0);
+}
 
 int	test1(void)
 {
@@ -23,41 +82,6 @@ int	test1(void)
 	int			fd2;
 	int			next;
 	size_t		i;
-	const char	*files[] = {
-		"1char.txt",
-		"41_no_nl",
-		"41_no_nl.txt",
-		"41_with_nl",
-		"42_no_nl",
-		"42_with_nl",
-		"43_no_nl",
-		"43_with_nl",
-		"alternate_line_nl_no_nl",
-		"alternate_line_nl_with_nl",
-		"big_line_no_nl",
-		"big_line_with_nl",
-//		"el_quijote_ol.txt",
-//		"el_quijote.txt",
-		"empty",
-		"empty.txt",
-		"giant_line_nl.txt",
-		"giant_line.txt",
-		"hola.txt",
-		"lines_around_10.txt",
-		"multiple_line_no_nl",
-		"multiple_line_with_nl",
-		"multiple_nl.txt",
-		"multiple_nlx5",
-		"nl",
-		"one_line_no_nl.txt",
-		"only_nl.txt",
-		"read_error.txt",
-		"test2.txt",
-		"test_nl",
-		"test_short_line.txt",
-		"variable_nls.txt",
-		NULL
-	};
 
 	line = NULL;
 	i = 0;
@@ -129,7 +153,7 @@ void	test4(void)
 {
 	int		fd;
 	char	*line;
-	
+
 	fd = 1000;
 	while ((line = get_next_line(fd)))
 	{
