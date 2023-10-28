@@ -5,7 +5,7 @@ ifndef BUFFER_SIZE
 	BUFFER_SIZE = 200000
 endif
 
-CC					=	cc
+CC					=	gcc
 CFLAGS				=	-g3 -Wall -Werror -Wextra -D BUFFER_SIZE=$(BUFFER_SIZE)
 FLAGS_SANITIZE		=	-D BUFFER_SIZE=$(BUFFER_SIZE) -fsanitize=address
 FLAGS_DEBUG			=	-D BUFFER_SIZE=$(BUFFER_SIZE) -g3
@@ -34,5 +34,5 @@ fclean: clean
 
 re:	fclean all
 
-#.SILENT: all $(LIBRARY) $(OBJS) clean fclean debug
+#.SILENT: all $(LIBRARY) $(OBJS) clean fclean debug sanitize
 .PHONY: all clean fclean re 

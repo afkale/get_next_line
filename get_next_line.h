@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 19:32:57 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/07 15:36:15 by arubio-o         ###   ########.fr       */
+/*   Created: 2023/10/28 11:15:28 by ale               #+#    #+#             */
+/*   Updated: 2023/10/28 11:15:30 by ale              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-
-# include <stdio.h>
 
 typedef struct s_buffer {
 	char	content[BUFFER_SIZE];
