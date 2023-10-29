@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 11:15:28 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 16:30:50 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/29 13:35:23 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 
 typedef struct s_buffer {
 	char	content[BUFFER_SIZE];
