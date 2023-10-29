@@ -1,7 +1,5 @@
 files="files"
 
-
-
 for file in "$files"/*; do
 	if [ -f $file ]; then
 		response="responses/$(basename "$file")"
