@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
+/*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 11:15:28 by ale               #+#    #+#             */
-/*   Updated: 2023/10/29 15:31:01 by arubio-o         ###   ########.fr       */
+/*   Created: 2023/10/29 21:45:53 by arubio-o          #+#    #+#             */
+/*   Updated: 2023/10/29 21:45:55 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_buffer {
 }		t_buffer;
 
 void	ft_clear(char **str);
-void	*ft_calloc(size_t size);
 char	*get_next_line(int fd);
 size_t	strend(t_buffer const *buffer);
 size_t	ft_strlen(char *str);
