@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 10:53:51 by ale               #+#    #+#             */
-/*   Updated: 2023/10/29 11:51:17 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/29 12:10:23 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,6 @@ void	test_bonus0(void){
 
 int	main(int argc, char *argv[])
 {
-	test_bonus0();
+	test0();
 	return (0);
 }

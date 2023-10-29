@@ -6,7 +6,7 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:15:14 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/28 22:38:21 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/29 12:40:03 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10000000
 # endif
-# define MAX_FD 8192
+# define MAX_FD 1024
 
 # include <unistd.h>
 # include <stdlib.h>
