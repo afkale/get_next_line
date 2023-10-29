@@ -6,7 +6,7 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 10:53:51 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 18:03:15 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/29 11:51:17 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,8 +162,45 @@ void	test4(void)
 	}
 }
 
+void	test_bonus0(void){
+	int		fd[4];
+	int		main_fd;
+	int		loops;
+	char	*line;
+
+	fd[0] = open("files/41_with_nl", O_RDONLY);
+	fd[1] = open("files/el_quijote.txt", O_RDONLY);
+	fd[2] = open("files/el_quijote_2.txt", O_RDONLY);
+	fd[3] = open("files/nl", O_RDONLY);
+
+	loops = 0;
+	main_fd = 0;
+	while (1)
+	{
+		line = get_next_line(fd[main_fd]);
+		printf("%s", line);
+		if (line == NULL)
+		{
+			close(main_fd);
+			fd[main_fd] = -1;
+		}
+		ft_clear(&line);
+		loops = 0;
+		do
+		{
+			if (main_fd == 3) main_fd = 0;
+			else main_fd++;
+			loops++;
+			if (loops == 5)
+				return;
+		}
+		while (fd[main_fd] < 0);
+	}
+
+}
+
 int	main(int argc, char *argv[])
 {
-	test1();
+	test_bonus0();
 	return (0);
 }
