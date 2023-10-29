@@ -6,7 +6,7 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:15:14 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/29 12:40:03 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/29 13:37:08 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 
 typedef struct s_buffer {
 	char	content[BUFFER_SIZE];

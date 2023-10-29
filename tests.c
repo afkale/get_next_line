@@ -6,13 +6,14 @@
 /*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 10:53:51 by ale               #+#    #+#             */
-/*   Updated: 2023/10/29 12:10:23 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/29 13:37:01 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include <stdio.h>
 #include <string.h>
+#include <fcntl.h>
+#include "get_next_line.h"
 
 const char	*files[] = {
 	"1char.txt",
