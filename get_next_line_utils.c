@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ale </var/spool/mail/ale>                  +#+  +:+       +#+        */
+/*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/28 11:15:39 by ale               #+#    #+#             */
-/*   Updated: 2023/10/28 16:23:54 by arubio-o         ###   ########.fr       */
+/*   Created: 2023/10/29 12:31:40 by arubio-o          #+#    #+#             */
+/*   Updated: 2023/10/29 12:32:04 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
-	i = 0;
 	if (str == NULL)
-		return (i);
+		return (0);
+	i = 0;
 	while (str[i])
 		i++;
 	return (i);

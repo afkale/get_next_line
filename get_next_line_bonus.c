@@ -6,13 +6,11 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 12:41:40 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/28 18:59:37 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/10/28 22:47:41 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-#define MAX_FD 8192
+#include "get_next_line_bonus.h"
 
 char	*strljoin(char *dest, char *src, size_t n)
 {
@@ -47,7 +45,7 @@ char	*get_next_line(int fd)
 
 	line = NULL;
 	endl = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= MAX_FD)
 		return (NULL);
 	while (1)
 	{

@@ -54,4 +54,6 @@ responses
 *.o
 debug
 sanitize
+bsanitize
+bdebug
 bonus
