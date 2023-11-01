@@ -6,20 +6,22 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:15:14 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/11/01 21:30:35 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/11/01 22:43:49 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10000000
 # endif
+# if BUFFER_SIZE < 0
+#  define BUFFER_SIZE 0
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
 
 typedef struct s_buffer {
 	char	content[BUFFER_SIZE];
@@ -32,4 +34,4 @@ char	*get_next_line(int fd);
 size_t	strend(t_buffer const *buffer);
 size_t	ft_strlen(char *str);
 
-#endif // !GET_NEXT_LINE_BONUS_H
+#endif // !GET_NEXT_LINE_H

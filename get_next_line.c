@@ -6,13 +6,13 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 12:41:40 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/10/29 12:43:05 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/11/01 22:46:02 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*strljoin(char *dest, char *src, size_t n)
+static char	*strljoin(char *dest, char *src, size_t n)
 {
 	size_t	i;
 	char	*res;
@@ -45,7 +45,7 @@ char	*get_next_line(int fd)
 
 	line = NULL;
 	endl = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= OPEN_MAX)
 		return (NULL);
 	while (1)
 	{
