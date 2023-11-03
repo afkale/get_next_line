@@ -6,11 +6,11 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:45:37 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/11/01 22:44:08 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:11:05 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	ft_clear(char **str)
 {
