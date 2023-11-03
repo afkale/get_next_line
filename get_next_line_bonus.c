@@ -6,7 +6,7 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 12:41:40 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/11/01 21:30:58 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:09:57 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*get_next_line(int fd)
 {
 	size_t			endl;
 	char			*line;
-	static t_buffer	buffer[MAX_FD];
+	static t_buffer	buffer[OPEN_MAX];
 
 	line = NULL;
 	endl = 0;

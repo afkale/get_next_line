@@ -6,7 +6,7 @@
 /*   By: arubio-o <arubio-o@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 21:45:53 by arubio-o          #+#    #+#             */
-/*   Updated: 2023/11/01 22:41:28 by arubio-o         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:08:23 by arubio-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #  define BUFFER_SIZE 10000000
 # endif
 # if BUFFER_SIZE < 0
+#  undef BUFFER_SIZE
 #  define BUFFER_SIZE 0
 # endif
 
